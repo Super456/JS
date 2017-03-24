@@ -1,0 +1,33 @@
+$maincolor:#ffa000;
+
+body {
+    margin: 0 auto;
+    max-width: 760px;
+}
+.content {
+    width: 100%;
+    div {
+        width: 30%;
+        padding: 15% 0 15% 0;
+        margin: 1.5%;
+        background-color: $maincolor;
+        border-radius: 5px;
+        float: left;
+    }
+}
+button {
+    width: 90%;
+    margin: 10px 5%;
+    background-color: #fff;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    color: $maincolor;
+    border-radius: 5px;
+    border: 1px solid $maincolor;
+    outline: none;
+    &:hover {
+        background-color: $maincolor;
+        color: #fff;
+    }
+}
