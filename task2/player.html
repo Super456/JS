@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="player.css" type="text/css" rel="stylesheet">
+    <meta name="viewport"  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script src="player.js" type="text/javascript"></script>
+    <title>player</title>
+</head>
+<body>
+<div class="header">
+    <img src="back.png">
+</div>
+<content>
+    <h2>玩家配比</h2>
+    <div class="out">
+        <span id="killer">杀手 人</span>
+        <span id="civil">平民 人</span>
+        <span id="order">身份情况</span>
+    </div>
+    <div class="in">
+        请输入玩家数量
+        <input type="number" id="num" onblur="distri()">
+        <span>玩家数量为4-18</span>
+    </div>
+    <button class="com" onclick="order()">
+        去发牌
+    </button>
+</content>
+</body>
+</html>
