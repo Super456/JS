@@ -1,0 +1,73 @@
+@import "base";
+
+.header {
+    text-align: center;
+    line-height: 4rem;
+    img {
+        height: 2rem;
+        padding: 1rem;
+    }
+    .back {
+        transform: rotate(180deg);
+        float: left;
+    }
+    .close {
+        float: right;
+    }
+    span {
+        font-size: 1.6rem;
+        color: $white;
+
+    }
+}
+body {
+    background-color: $maincolor;
+}
+content {
+    padding-top: 4rem;
+    .box {
+        width: 70%;
+        padding-top: 10rem;
+        height: 25rem;
+        border: 2px solid $white;
+        background-color: $vote;
+        margin: 8rem 15% 3rem 15%;
+        position: relative;
+        img {
+            width: 60%;
+            margin: 0 20%;
+        }
+    }
+    .num {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        background-color: $white;
+        border: 2px solid $vote;
+        text-align: center;
+        line-height: 4rem;
+        font-size: 2rem;
+        color: $yellow;
+        position: absolute;
+        top:6rem;
+        left: 50%;
+        margin-left: -2rem;
+    }
+    button {
+        width: 80%;
+        margin: 0 10%;
+        outline: none;
+        border: none;
+        background-color: $yellow;
+        color: $white;
+        height: 5rem;
+        font-size: 2.6rem;
+        line-height: 5rem;
+        text-align: center;
+    }
+    #iden {
+        text-align: center;
+        font-size: 2rem;
+        color: $maincolor;
+    }
+}

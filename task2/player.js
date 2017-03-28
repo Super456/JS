@@ -37,13 +37,15 @@ function order() {
         random[num] = random[ran];
         random[ran] = temp;
     }
-    //输出身份与编号
-    var player = new Array;
-    var length = random.length;
-    for (b=0;b<length;b++) {
-        var c = b+1
-        player[b]="<br>"+c+"号："+random[b];
+    random = JSON.stringify(random)
+    localStorage.random = random;
+}
+function goto() {
+    if (num<4 || num>18) {
+        alert("请输入正确的数量");
     }
-    var play = document.getElementById("order");
-    play.innerHTML = ("身份情况"+"<br>"+player)
+    else {
+        order();
+        window.location.href='distri.html';
+    }
 }
