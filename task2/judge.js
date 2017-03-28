@@ -10,9 +10,8 @@ function display() {
     var iden = document.getElementsByClassName("iden");
     var num = random.length;
     for (var i=0;i<num;i++){
-        box[i].style.visibility = "visible";
-        box[i].style.position = "inherit";
-        iden[i].innerHTML = random[i];
+        box[i].style.visibility = "visible";   //将小格子设置为可见
+        box[i].style.position = "inherit";     //取消position：absolute
+        iden[i].innerHTML = random[i];          //更改格子里身份信息
     }
-    console.log(i);
 }
