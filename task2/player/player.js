@@ -41,11 +41,15 @@ function order() {
     localStorage.random = random;
 }
 function goto() {
-    if (num<4 || num>18) {
+    if (num<4 || num>18 ) {
         alert("请输入正确的数量");
     }
     else {
         order();
-        window.location.href='distri.html';
+        window.location.href='../distri/distri.html';
     }
 }
+var deador = new Array;
+deador[0]=1;
+deador = JSON.stringify(deador)
+localStorage.deador=deador;

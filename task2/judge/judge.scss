@@ -1,24 +1,7 @@
-@import "base";
+@import "../_base";
 
 .header {
-    text-align: center;
-    line-height: 4rem;
-    img {
-        height: 2rem;
-        padding: 1rem;
-    }
-    .back {
-        transform: rotate(180deg);
-        float: left;
-    }
-    .close {
-        float: right;
-    }
-    span {
-        font-size: 1.6rem;
-        color: $white;
-
-    }
+    @include headerStyle;
 }
 body {
     background-color: $maincolor;

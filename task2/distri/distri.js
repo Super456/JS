@@ -12,7 +12,7 @@ function result(){
     img = document.getElementById("img");
     iden = document.getElementById("iden");
     //更换图片
-    img.src = "pic2.png";
+    img.src = "../pic/pic2.png";
     //显示身份
     iden.innerHTML = random[a];
     //修改按钮文字
@@ -21,14 +21,14 @@ function result(){
 }
 function hide() {
     //更换图片
-    img.src ="pic1.png"
+    img.src ="../pic/pic1.png"
     //隐藏身份 修改按钮
     iden.innerHTML = null;
     word.innerHTML = "查看"+page+"号身份";
 }
 //最后一页的按钮
 function last() {
-    img.src = "pic2.png";
+    img.src = "../pic/pic2.png";
     iden.innerHTML = random[a];
     word.innerHTML = "法官查看"
 }
@@ -57,7 +57,7 @@ function show() {
     }
     //进入法官查看页面
     else {
-        window.location.href='judge.html'
+        window.location.href='../judge/judge.html'
     }
     a=a+0.5;
 }

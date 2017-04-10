@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="book.css" type="text/css" rel="stylesheet">
+    <meta name="viewport"  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
+    <title>book</title>
+</head>
+<body>
+<div class="header">
+    <img class="back" src="../pic/back.png">
+    <img class="close" src="../pic/close.png">
+    <span>法官台本</span>
+</div>
+<div class="content">
+    <div id="dt" class="date">
+        第1天
+    </div>
+    <div class="step">
+        <div class="night">
+            <img class="moon" src="../pic/moon.png">
+            <div class="kill" onclick="kill()">杀手杀人</div>
+        </div>
+        <div class="daytime">
+            <img class="sun" src="../pic/sun.png">
+            <div class="word">亡灵发表遗言</div>
+            <div class="all">玩家依次发言</div>
+            <div class="vote">全民投票</div>
+        </div>
+    </div>
+</div>
+<footer>
+    <button>结束游戏</button>
+    <button id="diary">法官日记</button>
+</footer>
+<script src="book.js" type="text/javascript"></script>
+</body>
+</html>
