@@ -48,3 +48,6 @@ for (h=1;h<long;h++) {
     detail[h*2].innerHTML="晚上："+(deador[(h+1)*2-1]+1)+"号被杀手杀死，"+(deador[(h+1)*2-1]+1)+"号是"+alive[deador[(h+1)*2-1]][0]
     detail[(h*2-1)].innerHTML="<br />白天："+(deador[(h*2)]+1)+"号被全民投票投死，"+(deador[h*2]+1)+"号是"+alive[deador[h*2]][0]
 }
+$(".again").click(function () {
+    window.location.href="../home/home.html"
+})

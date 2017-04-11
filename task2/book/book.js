@@ -27,6 +27,12 @@ if (step==0) {
     $(".kill").css('backgroundColor','#69D1E9');
     $('.word').css('backgroundColor','#69D1E9');
     $('.all').css('backgroundColor','#69D1E9');
+    if (date>1) {
+        $(".night").before('<div class="vot"></div>')
+        $(".vot").text((dead+1)+"号被投票出局")
+        $(".sun").css('top','9.5rem')
+        $(".moon").css('top','4rem')
+    }
 }
 if (step==1) {
     $(".kill").css('backgroundColor','lightgray')

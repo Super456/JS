@@ -37,6 +37,14 @@ body {
         margin: 0 auto;
         border: 1px solid $lgray;
         position: relative;
+        .vot {
+            height: 3rem;
+            width: 100%;
+            text-align: center;
+            line-height: 3rem;
+            font-size: 1.6rem;
+            color: gray;
+        }
         .night {
             img {
                 width: 2rem;

@@ -37,6 +37,9 @@ $(function() {
     }
     $(".slection").click(function() {
         dead = ($(".slection").index($(this)));
+        if (alive[dead][1]=="dead") {
+            alert("此人已死")
+        }
     });
 })
 
