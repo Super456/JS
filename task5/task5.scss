@@ -1,0 +1,69 @@
+$maincolor: #03A9F4;
+$bgcolor: #D1D4D9;
+$white: #FFFFFF;
+
+html {
+    margin: 0;
+}
+body {
+    background: url("bgp.png") no-repeat;
+    background-size: 100%;
+    margin: 0;
+}
+.container {
+    background-color: $bgcolor;
+    width: 540px;
+    height: 390px;
+    position: absolute;
+    left:50%;
+    top: 50%;
+    margin-left: -270px;
+    margin-top: -195px;
+    h1 {
+        color: $maincolor;
+        padding: 30px;
+        text-align: center;
+        margin: 0;
+    }
+    button {
+        width: 80%;
+        margin: 0 10%;
+        background-color: $maincolor;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        color: $white;
+        text-align: center;
+        height: 60px;
+        line-height: 60px;
+        padding: 0;
+        font-size: 20px;
+    }
+    div {
+        width: 80%;
+        margin: 0 auto;
+        background-color: $white;
+        height: 60px;
+        padding: 0 10px;
+        line-height: 60px;
+        img {
+            padding: 0 20px;
+        }
+        input {
+            padding: 0 30px;
+            width: 60%;
+            border: none;
+            height: 25px;
+            border-left: 1px solid lightgray;
+            outline: none;
+        }
+    }
+    .use {
+        margin-bottom: 30px;
+    }
+    span {
+        display: inline-block;
+        margin: 10px 50px;
+        color: #ff0000;
+    }
+}
