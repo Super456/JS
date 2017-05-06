@@ -1,0 +1,40 @@
+content {
+    width: 100%;
+}
+.head {
+    background-color: #F0F0F0;
+    border: 1px solid gray;
+    line-height: 50px;
+    padding: 10px;
+    span {
+        padding: 0 10px 0 10px;
+    }
+    margin-bottom: 10px;
+}
+.manage {
+    border: 1px solid gray;
+    height: 300px;
+    .title {
+        height: 50px;
+        border-bottom: 1px solid gray;
+        line-height: 50px;
+        padding: 0 20px 0 20px;
+        button {
+            float: right;
+            height: 30px;
+            margin: 10px 20px;
+            background-color: #F0F0F0;
+            border: 1px solid gray;
+        }
+    }
+    .detail {
+        margin: 10px 15px;
+        background-color: #F0F0F0;
+        height: 50px;
+        line-height: 50px;
+        border: 1px solid gray;
+        span {
+            padding: 0 20px;
+        }
+    }
+}

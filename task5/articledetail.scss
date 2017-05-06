@@ -1,0 +1,17 @@
+content {
+    border: 1px solid gray;
+    display: block;
+    width: 100%;
+    .head {
+        height: 50px;
+        padding-left: 20px;
+        font-weight: bold;
+        line-height: 50px;
+        border-bottom: 1px solid gray;
+    }
+    .detail {
+        height: 400px;
+        line-height: 50px;
+        padding-left: 20px;
+    }
+}

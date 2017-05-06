@@ -13,6 +13,9 @@ $("#login").click(function() {
         dataType: "json",
         success: function(data){
             $("#tip").text(data.message);
+            if(data.message=="success"){
+                window.location.href="./backend.html"
+            }
         }
     });
 });

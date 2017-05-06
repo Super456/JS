@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    padding:0;
+}
+header {
+    width: 96%;
+    height: 80px;
+    background-color: lightgray;
+    border: 1px solid gray;
+    margin: 10px auto;
+    line-height: 80px;
+    padding-left: 10px;
+}
+nav {
+    float: left;
+    height: 500px;
+    margin-left: 2%;
+    border:1px solid gray;
+    background-color: lightgray;
+    width: 15%;
+    ul {
+        padding: 0;
+        margin: 0;
+    }
+    li {
+        border-bottom: 1px solid gray;
+        height: 50px;
+        line-height: 50px;
+        list-style-type: none;
+        img {
+            padding:0 5px 0 5px;
+        }
+    }
+}
+#content {
+    display: inline-block;
+    margin-left: 10px;
+    width: 80%;
+}
