@@ -31,15 +31,27 @@
         </div>
         <div class="detail">
             <div class="list">
-                <span>序号</span>
-                <span>图片</span>
-                <span>标题</span>
-                <span>类型</span>
-                <span>创建者</span>
-                <span>创建时间</span>
-                <span>修改时间</span>
-                <span>状态</span>
+                <span class="num">序号</span>
+                <span class="pic">图片</span>
+                <span class="top">标题</span>
+                <span class="type">类型</span>
+                <span class="author">创建者</span>
+                <span class="creat">创建时间</span>
+                <span class="publish">修改时间</span>
+                <span class="status">状态</span>
                 <span>操作</span>
+            </div>
+            <div class="article" ng-repeat="x in article">
+                <span class="num">{{x.status}}</span>
+                <img class="imgs" src="{{x.img}}" width="60px" height="50px">
+                <span class="top">{{x.title}}</span>
+                <span class="type">{{
+                    x.type=="0" && "首页banner" || x.type=="1" && "找职位banner" || x.type=="2" && "找精英banner" || x.type=="3" && "行业大图"
+                    }}</span>
+                <span class="author">{{x.author}}</span>
+                <span class="creat">{{x.createAt | date:'yyyy-MM-dd HH:mm:ss' }}</span>
+                <span class="publish">{{x.publishat | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                <span class="status">{{x.status}}</span>
             </div>
         </div>
     </div>

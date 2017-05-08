@@ -61,9 +61,13 @@ body {
     .use {
         margin-bottom: 30px;
     }
-    span {
+    #tip {
         display: inline-block;
         margin: 10px 50px;
         color: #ff0000;
     }
+}
+.error {
+    margin-left: 15%;
+    color: red;
 }

@@ -13,7 +13,10 @@ content {
 }
 .manage {
     border: 1px solid gray;
-    height: 300px;
+    height: 1000px;
+    img {
+        width: 50px;
+    }
     .title {
         height: 50px;
         border-bottom: 1px solid gray;
@@ -29,12 +32,56 @@ content {
     }
     .detail {
         margin: 10px 15px;
-        background-color: #F0F0F0;
-        height: 50px;
-        line-height: 50px;
         border: 1px solid gray;
-        span {
-            padding: 0 20px;
+        .list {
+            background-color: #F0F0F0;
+            height: 50px;
+            line-height: 50px;
+            border-bottom: 1px solid gray;
+            span {
+                display: inline-block;
+                text-align: center;
+            }
+        }
+        .article {
+            height: 80px;
+            line-height: 80px;
+            border-bottom: 1px solid gray;
+            span {
+                display: inline-block;
+                text-align: center;
+            }
         }
     }
+}
+.imgs {
+    width: 50px;
+    vertical-align: middle;
+    padding: 0 10px;
+}
+.num {
+    width: 50px;
+}
+.pic {
+    width: 70px;
+}
+.top {
+    width: 150px;
+}
+.type {
+    width: 150px;
+}
+.author {
+    width: 70px;
+}
+.creat {
+    width: 100px;
+    line-height: 20px;
+}
+.publish{
+    width: 100px;
+    line-height: 20px;
+}
+.status {
+    width: 100px;
 }

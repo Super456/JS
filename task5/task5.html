@@ -5,24 +5,39 @@
     <link href="task5.css" type="text/css" rel="stylesheet">
     <meta name="viewport"  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <script src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
-    <script src="angular.js"></script>
-    <script src="http://apps.bdimg.com/libs/restangular/1.4.0/restangular.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.6.3/angular.min.js"></script>
     <title>task5</title>
 </head>
-<body>
-<div class="container">
+<body ng-app="loginApp">
+<form name="signup" class="container" ng-controller="userinfoctrl">
     <h1>后台登陆</h1>
     <div class="use">
         <img src="name.png">
-        <input id="user" type="name" placeholder="用户名">
+        <input id="user"
+                name="user"
+                type="name"
+                placeholder="用户名"
+                ng-model="userinfo.user"
+                ng-minlength="4"
+                ng-maxlength="10"
+                required>
     </div>
     <div class="pass">
         <img src="lock.png">
-        <input id="pwd" type="password" placeholder="密码">
+        <input id="pwd"
+               name="pwd"
+               type="password"
+               placeholder="密码"
+               ng-model="userinfo.pwd"
+               ng-minlength="4"
+               ng-maxlength="12"
+               required>
     </div>
+    <span class="error" ng-if="signup.user.$invalid && signup.user.$touched">用户名应为4-10位</span>
+    <span class="error" ng-if="signup.pwd.$invalid && signup.pwd.$touched">密码应为4-12位</span>
     <span id="tip"></span>
-    <button id="login">登陆</button>
-</div>
+    <button id="login" ng-click="getpwd()">登陆</button>
+</form>
 <script type="text/javascript" src="task5.js"></script>
 </body>
 </html>

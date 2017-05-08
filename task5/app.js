@@ -17,3 +17,14 @@ app.config(['$routeProvider', function ($routeProvider) {
             redirectTo: '/pag1'
         });
 }])
+app.controller('getarticle',function ($scope,$http) {
+    $scope.getart=function () {
+        $http({
+            method:"GET",
+            url:"/carrots-admin-ajax/a/article/search"
+        }).then(function successCallback(reponse) {
+            $scope.article = reponse.data.data.articleList;
+            console.log($scope.article[1].type)
+        })
+    }
+})
