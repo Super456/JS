@@ -7,21 +7,33 @@
     <title>articlelist</title>
 </head>
 <body>
-<content>
+<content ng-controller="getarticle">
     <div class="head">
         <span>标&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;题</span>
-        <input>
+        <input ng-model="seletitle">
         <span>创&nbsp;建&nbsp;者</span>
-        <input>
+        <input ng-model="seleauthor">
         <span>创建时间</span>
-        <input>
+        <input type="date" ng-model="selestart">
         <span>-</span>
-        <input>
+        <input type="date" ng-model="selepublish">
         <br />
         <span>状&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;态</span>
-        <input>
+        <select ng-model="selestatus">
+            <option value="">全部</option>
+            <option value="1">草稿</option>
+            <option value="2">上线</option>
+        </select>
         <span>类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型</span>
-        <input>
+        <select id='typenum' ng-model="seletype">
+            <option value="">全部</option>
+            <option value="0">首页banner</option>
+            <option value="1">找职位banner</option>
+            <option value="2">找精英banner</option>
+            <option value="3">行业大图</option>
+        </select>
+        <button class="btn btn-default" ng-click="clear()">清空</button>
+        <button class="btn btn-default" ng-click="getart()">搜索</button>
     </div>
     <div class="manage">
         <div class="title">
@@ -42,19 +54,26 @@
                 <span>操作</span>
             </div>
             <div class="article" ng-repeat="x in article">
-                <span class="num">{{x.status}}</span>
+                <span class="num">{{$index+1}}</span>
                 <img class="imgs" src="{{x.img}}" width="60px" height="50px">
                 <span class="top">{{x.title}}</span>
-                <span class="type">{{
-                    x.type=="0" && "首页banner" || x.type=="1" && "找职位banner" || x.type=="2" && "找精英banner" || x.type=="3" && "行业大图"
-                    }}</span>
+                <span class="type">{{x.type | typename}}</span>
                 <span class="author">{{x.author}}</span>
                 <span class="creat">{{x.createAt | date:'yyyy-MM-dd HH:mm:ss' }}</span>
                 <span class="publish">{{x.publishat | date:'yyyy-MM-dd HH:mm:ss'}}</span>
-                <span class="status">{{x.status}}</span>
+                <span class="status">{{x.status=="1" && "草稿" || x.status=="2" && "上线"}}</span>
             </div>
+        </div>
+        <div class="pages">
+            <button class="btn btn-default" ng-click="firstpage()">首页</button>
+            <button class="btn btn-default" ng-click="gopre()">上一页</button>
+            <input class="pagenum" type="number" ng-blur="direct()" ng-model="page">
+            <button class="btn btn-default" ng-click="gonext()">下一页</button>
+            <button class="btn btn-default" ng-click="lastpage()">末页</button>
+
         </div>
     </div>
 </content>
+<script src="articlelist.js"></script>
 </body>
 </html>

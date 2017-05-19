@@ -6,10 +6,28 @@ content {
     border: 1px solid gray;
     line-height: 50px;
     padding: 10px;
-    span {
-        padding: 0 10px 0 10px;
-    }
     margin-bottom: 10px;
+    input {
+        height: 30px;
+    }
+    select {
+        height: 30px;
+        border-radius: 5px;
+        width: 150px;
+    }
+    .caret {
+        padding: 0;
+        float: right;
+        margin-top: 10px;
+    }
+    .btn {
+        width: 200px;
+    }
+    .btn-default {
+        width: 100px;
+        float: right;
+        margin-right: 30px;
+    }
 }
 .manage {
     border: 1px solid gray;
@@ -28,6 +46,7 @@ content {
             margin: 10px 20px;
             background-color: #F0F0F0;
             border: 1px solid gray;
+            line-height: 30px;
         }
     }
     .detail {
@@ -66,7 +85,7 @@ content {
     width: 70px;
 }
 .top {
-    width: 150px;
+    width: 170px;
 }
 .type {
     width: 150px;
