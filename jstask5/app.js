@@ -3,7 +3,7 @@
  */
 var myApp = angular.module("myApp", ['ui.router']);
 myApp.config(function ($stateProvider,$urlRouterProvider) {
-        $urlRouterProvider.when("", "<p>Welcome</p>")
+        $urlRouterProvider.otherwise("page1")
         $stateProvider
             .state("page1",{
                 url:"/page1",
