@@ -7,19 +7,60 @@
     <title>articledetail</title>
 </head>
 <body>
-<content>
+<content ng-controller="upload">
     <div class="head">新增/编辑</div>
-    <div class="detail">
-        <span>类型</span>
-        <input>
-        <br />
-        <span>标题名称</span>
-        <input>
-        <br />
-        <span>跳转链接</span>
-        <input>
-        <br />
-    </div>
+    <table class="form">
+        <tr>
+            <th>类型</th>
+            <td>
+                <select id='typenum' ng-model="seletype">
+                    <option value="">全部</option>
+                    <option value="0">首页banner</option>
+                    <option value="1">找职位banner</option>
+                    <option value="2">找精英banner</option>
+                    <option value="3">行业大图</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>标题名称</th>
+            <td><input class="title"></td>
+        </tr>
+        <tr>
+            <th>跳转链接</th>
+            <td><input class="title"></td>
+        </tr>
+        <tr>
+            <th>配图</th>
+            <td><div class="pic"><input id="file" type="file" accept="image/*" name="img">选择图片</div></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td id="preview"><img id="file_img" src=""></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>
+                <table class="picstatus">
+                    <tr>
+                        <td>图片名</td>
+                        <td>文件大小</td>
+                        <td>进度</td>
+                        <td>操作</td>
+                        <td>操作</td>
+                    </tr>
+                    <tr>
+                        <td id="picname"></td>
+                        <td id="picsize"></td>
+                        <td id="progress">{{percent}}</td>
+                        <td id="status"></td>
+                        <td><button class="btn btn-default" ng-click="up()">上传</button><button class="btn btn-default">删除</button> </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
 </content>
 </body>
+<script src="articlelist.js"></script>
 </html>

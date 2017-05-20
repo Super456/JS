@@ -9,9 +9,50 @@ content {
         line-height: 50px;
         border-bottom: 1px solid gray;
     }
-    .detail {
-        height: 400px;
+    .form {
+        display: block;
+        padding: 40px 2% 20px 5%;
+        width: 1000px;
         line-height: 50px;
-        padding-left: 20px;
+        th {
+            padding-right: 20px;
+            float: right;
+        }
+        input {
+            height: 30px;
+        }
+        .pic {
+            position: relative;
+            border: 1px solid lightgray;
+            border-radius: 5px;
+            text-align: center;
+            width: 150px;
+            height: 50px;
+            line-height: 50px;
+            cursor: pointer;
+        }
+    }
+    #file {
+        position: absolute;
+        top:0;
+        left: 0;
+        height: 50px;
+        width: 160px;
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+    #file_img {
+        max-width: 80px;
+        max-height: 80px;
+        margin: 20px;
+    }
+    .picstatus {
+        td {
+            width: 120px;
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid lightgray;
+            text-align: center;
+        }
     }
 }

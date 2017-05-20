@@ -95,3 +95,33 @@ myApp.filter("typename",function () {
         return type = typeshow[type];
     }
 })
+myApp.controller("upload",function ($scope,$http) {
+    $scope.up=function () {
+        $http({
+            method:"POST",
+            url:"/carrots-admin-ajax/a/u/img/task",
+            headers:{'Content-Type':undefined},
+            transformRequest: function () {
+                var picdata = new FormData()
+                picdata.append('file',picfile)
+                return picdata
+            },
+            uploadEventHandlers:{
+                progress:function (evt) {
+                    console.log(parseInt(100.0 * evt.loaded / evt.total))
+                    console.log(evt)
+                    $scope.percent=parseInt(100.0 * evt.loaded / evt.total) + "%"
+                }
+            }
+        }).then(function successCallback(reponse) {
+            if (reponse.data.code==0) {
+                document.getElementById("status").innerHTML="上传成功"
+            }
+            else {
+                document.getElementById("status").innerHTML="失败"
+            }
+        },function errorCallback(reponse) {
+            document.getElementById("status").innerHTML="文件过大"
+        })
+    }
+})
