@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport"  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link href="articledetail.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="wangEditor.css">
     <title>articledetail</title>
 </head>
 <body>
@@ -12,23 +13,35 @@
     <table class="form">
         <tr>
             <th>类型</th>
-            <td>
-                <select id='typenum' ng-model="seletype">
-                    <option value="">全部</option>
+            <td id="type">
+                <select id='typenum' ng-model="typenum" ng-change="change(typenum)">
                     <option value="0">首页banner</option>
                     <option value="1">找职位banner</option>
                     <option value="2">找精英banner</option>
                     <option value="3">行业大图</option>
                 </select>
+                <select id='indus' ng-class="show" ng-model="indus">
+                    <option value="0">移动互联网</option>
+                    <option value="1">电子商务</option>
+                    <option value="2">企业服务</option>
+                    <option value="3">O2O</option>
+                    <option value="4">教育</option>
+                    <option value="5">金融</option>
+                    <option value="6">游戏</option>
+                </select>
             </td>
         </tr>
         <tr>
             <th>标题名称</th>
-            <td><input class="title"></td>
+            <td><input class="title" ng-model="title"></td>
+        </tr>
+        <tr>
+            <th>说明</th>
+            <td id="instro"><div id="editor"></div> </td>
         </tr>
         <tr>
             <th>跳转链接</th>
-            <td><input class="title"></td>
+            <td><input class="title" ng-model="link"></td>
         </tr>
         <tr>
             <th>配图</th>
@@ -54,13 +67,17 @@
                         <td id="picsize"></td>
                         <td id="progress">{{percent}}</td>
                         <td id="status"></td>
-                        <td><button class="btn btn-default" ng-click="up()">上传</button><button class="btn btn-default">删除</button> </td>
+                        <td><button class="btn btn-default" ng-click="up()">上传</button><button class="btn btn-default" ng-click="Mychange()">删除</button> </td>
                     </tr>
                 </table>
             </td>
         </tr>
     </table>
+    <button class="btn btn-primary" ng-click="submit()">立即上线</button>
+    <button class="btn btn-default" ng-click="save()">存为草稿</button>
+    <button class="btn btn-warning" ng-click="cancel()">取消</button>
 </content>
 </body>
+<script src="wangEditor.js"></script>
 <script src="articlelist.js"></script>
 </html>

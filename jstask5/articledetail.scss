@@ -55,4 +55,22 @@ content {
             text-align: center;
         }
     }
+    #instro {
+        width: 800px;
+    }
+    #type {
+        width: 200px;
+    }
+    .show {
+        visibility: visible;
+    }
+    .hid {
+        visibility: hidden;
+    }
+    .btn-primary {
+        margin-left: 150px;
+    }
+    .btn-warning {
+        margin-left: 100px;
+    }
 }

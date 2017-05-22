@@ -38,7 +38,7 @@
     <div class="manage">
         <div class="title">
             <span>article管理</span>
-            <button>+新增</button>
+            <button ui-sref="page3" href="">+新增</button>
             <button>保存排序</button>
         </div>
         <div class="detail">
@@ -56,12 +56,16 @@
             <div class="article" ng-repeat="x in article">
                 <span class="num">{{$index+1}}</span>
                 <img class="imgs" src="{{x.img}}" width="60px" height="50px">
-                <span class="top">{{x.title}}</span>
+                <span class="top1">{{x.title}}</span>
                 <span class="type">{{x.type | typename}}</span>
                 <span class="author">{{x.author}}</span>
                 <span class="creat">{{x.createAt | date:'yyyy-MM-dd HH:mm:ss' }}</span>
                 <span class="publish">{{x.publishat | date:'yyyy-MM-dd HH:mm:ss'}}</span>
                 <span class="status">{{x.status=="1" && "草稿" || x.status=="2" && "上线"}}</span>
+                <span class="controll">
+                    <a ng-click="changeStatus(x.id,x.status)">{{x.status=="1" && "上线" || x.status=="2" && "下线"}}</a>
+                    <a ui-sref="page3" href="" ng-click="addArt(x.id)">编辑</a>
+                    <a id="{{x.id}}" ng-click="dele()">删除</a></span>
             </div>
         </div>
         <div class="pages">

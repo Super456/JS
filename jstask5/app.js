@@ -15,10 +15,11 @@ myApp.config(function ($stateProvider,$urlRouterProvider) {
             })
             .state("page3",{
                 url:"/page3",
-                templateUrl:"articledetail.html"
+                templateUrl:"articledetail.html",
+                params:{"id":{}}
             })
 })
-myApp.controller('getarticle',function ($scope,$http) {
+myApp.controller('getarticle',function ($scope,$http,$state) {
     $scope.getart=function () {
         $scope.startAt=Date.parse($scope.selestart)
         $scope.endAt=Date.parse($scope.selepublish)
@@ -88,6 +89,35 @@ myApp.controller('getarticle',function ($scope,$http) {
         }
         else {$scope.getart()}
     }
+    $scope.dele=function () {
+        console.log(this.x.id)
+        var id = this.x.id
+        $http({
+            method:"delete",
+            url:"/carrots-admin-ajax/a/u/article/"+id
+        })
+        $scope.getart()
+    }
+    $scope.changeStatus=function (id,status) {
+        if (status==1){
+            status=2
+        }
+        else {
+            status=1
+        }
+        $http({
+            method:"put",
+            url:"/carrots-admin-ajax/a/u/article/status",
+            params:{
+                "id":id,
+                "status":status
+            }
+        })
+        $scope.getart()
+    }
+    $scope.addArt=function (id) {
+        $state.go('page3',{'id':id})
+    }
 })
 myApp.filter("typename",function () {
     var typeshow=["首页banner","找职位banner","找精英banner","行业大图"];
@@ -95,7 +125,106 @@ myApp.filter("typename",function () {
         return type = typeshow[type];
     }
 })
-myApp.controller("upload",function ($scope,$http) {
+myApp.controller("upload",function ($scope,$http,$stateParams) {
+    if (isNaN($stateParams.id)) {
+        $scope.submit = function () {
+            $http({
+                method:"POST",
+                url:"/carrots-admin-ajax/a/u/article",
+                params:{
+                    "title":$scope.title,
+                    "type":$scope.typenum,
+                    "status":"2",
+                    "img":$scope.picloc,
+                    "content":editor.$txt.text(),
+                    "url":$scope.link,
+                    "industry":$scope.indus,
+                }
+            }).then(function successCallback(mes) {
+                if (mes.data.code==0) {
+                    alert ("提交成功")
+                }
+            })
+        }
+        $scope.save = function () {
+            $http({
+                method:"POST",
+                url:"/carrots-admin-ajax/a/u/article",
+                params:{
+                    "title":$scope.title,
+                    "type":$scope.typenum,
+                    "status":"1",
+                    "img":$scope.picloc,
+                    "content":editor.$txt.text(),
+                    "url":$scope.link,
+                    "industry":$scope.indus,
+                }
+            }).then(function successCallback(mes) {
+                if (mes.data.code==0) {
+                    alert ("提交成功")
+                }
+            })
+        }
+    }
+    else {
+        $http({
+            method:"get",
+            url:"/carrots-admin-ajax/a/article/"+$stateParams.id
+        }).then(function successCallback(mes) {
+            $scope.article=mes.data.data.article
+            $("#typenum").val($scope.article.type)
+            if($scope.article.type!=3){
+                $scope.show="hid"
+            }else {
+                $("#indus").val($scope.article.industry)
+            }
+            $scope.title=$scope.article.title
+            $scope.typenum=$scope.article.type
+            $scope.status=$scope.article.status
+            $scope.indus=$scope.article.industry
+            $scope.link=$scope.article.url
+            $scope.picloc=$scope.article.img
+            $("#file_img").attr("src",$scope.article.img)
+            console.log($scope.article.type)
+            editor.$txt.append($scope.article.content)
+            $scope.submit=function () {
+                $http({
+                    method:"put",
+                    url:"/carrots-admin-ajax/a/u/article/"+$stateParams.id,
+                    params:{
+                        "title":$scope.title,
+                        "status":"2",
+                        "img":$scope.picloc,
+                        "content":editor.$txt.text(),
+                        "url":$scope.link,
+                        "industry":$scope.indus,
+                    }
+                }).then(function successCallback(mes) {
+                    if (mes.data.code==0) {
+                        alert ("修改成功")
+                    }
+                })
+            }
+            $scope.save=function () {
+                $http({
+                    method:"put",
+                    url:"/carrots-admin-ajax/a/u/article/"+$stateParams.id,
+                    params:{
+                        "title":$scope.title,
+                        "status":"1",
+                        "img":$scope.picloc,
+                        "content":editor.$txt.text(),
+                        "url":$scope.link,
+                        "industry":$scope.indus,
+                    }
+                }).then(function successCallback(mes) {
+                    if (mes.data.code==0) {
+                        alert ("修改成功")
+                    }
+                })
+            }
+        })
+    }
     $scope.up=function () {
         $http({
             method:"POST",
@@ -116,6 +245,7 @@ myApp.controller("upload",function ($scope,$http) {
         }).then(function successCallback(reponse) {
             if (reponse.data.code==0) {
                 document.getElementById("status").innerHTML="上传成功"
+                $scope.picloc = reponse.data.data.url
             }
             else {
                 document.getElementById("status").innerHTML="失败"
@@ -123,5 +253,20 @@ myApp.controller("upload",function ($scope,$http) {
         },function errorCallback(reponse) {
             document.getElementById("status").innerHTML="文件过大"
         })
+    }
+    $scope.change=function (typenum) {
+        if (typenum!=3) {
+            $scope.show = "hid"
+        }
+        else {
+            $scope.show = "show"
+        }
+    }
+    $scope.Mychange=function () {
+        console.log($scope.title)
+        console.log($scope.typenum)
+        console.log($scope.picloc)
+        console.log($scope.link)
+        console.log($scope.indus)
     }
 })
