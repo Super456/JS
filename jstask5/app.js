@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2017/5/6.
  */
-var myApp = angular.module("myApp", ['ui.router']);
+var myApp = angular.module("myApp", ['ui.router','ngMessages']);
 myApp.config(function ($stateProvider,$urlRouterProvider) {
         $urlRouterProvider.otherwise("page1")
         $stateProvider
@@ -250,8 +250,6 @@ myApp.controller("upload",function ($scope,$http,$stateParams) {
             else {
                 document.getElementById("status").innerHTML="失败"
             }
-        },function errorCallback(reponse) {
-            document.getElementById("status").innerHTML="文件过大"
         })
     }
     $scope.change=function (typenum) {
@@ -263,11 +261,16 @@ myApp.controller("upload",function ($scope,$http,$stateParams) {
             $scope.show = "show"
         }
     }
+    $scope.ableup=true
+    $scope.enableup=function () {
+        $scope.ableup=false
+    }
     $scope.Mychange=function () {
-        console.log($scope.title)
-        console.log($scope.typenum)
-        console.log($scope.picloc)
-        console.log($scope.link)
-        console.log($scope.indus)
+        document.getElementById("file_img").src = ""
+        document.getElementById("picname").innerHTML=""
+        document.getElementById("picsize").innerHTML=""
+        document.getElementById("status").innerHTML=""
+        $scope.percent=""
+        $scope.ableup=true
     }
 })

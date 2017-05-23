@@ -10,6 +10,7 @@
 <body>
 <content ng-controller="upload">
     <div class="head">新增/编辑</div>
+    <form name="myForm">
     <table class="form">
         <tr>
             <th>类型</th>
@@ -46,11 +47,15 @@
         </tr>
         <tr>
             <th>配图</th>
-            <td><div class="pic"><input id="file" type="file" accept="image/*" name="img">选择图片</div></td>
+            <td>
+                <div class="pic" ng-click="enableup()">
+                    <input id="file" type="file" accept="image/*" name="img">选择图片
+                </div>
+            </td>
         </tr>
         <tr>
             <th></th>
-            <td id="preview"><img id="file_img" src=""></td>
+            <td id="preview"><img id="file_img" src={{picloc}}></td>
         </tr>
         <tr>
             <th></th>
@@ -64,16 +69,20 @@
                         <td>操作</td>
                     </tr>
                     <tr>
-                        <td id="picname"></td>
+                        <td id="picname" ng-model="picname"></td>
                         <td id="picsize"></td>
                         <td id="progress">{{percent}}</td>
                         <td id="status"></td>
-                        <td><button class="btn btn-default" ng-click="up()">上传</button><button class="btn btn-default" ng-click="Mychange()">删除</button> </td>
+                        <td>
+                            <button class="btn btn-default" ng-click="up()" ng-disabled="ableup">上传</button>
+                            <button class="btn btn-default" ng-click="Mychange()" ng-disabled="ableup">删除</button>
+                        </td>
                     </tr>
                 </table>
             </td>
         </tr>
     </table>
+    </form>
     <button class="btn btn-primary" ng-click="submit()">立即上线</button>
     <button class="btn btn-default" ng-click="save()">存为草稿</button>
     <button class="btn btn-warning" ng-click="cancel()">取消</button>
