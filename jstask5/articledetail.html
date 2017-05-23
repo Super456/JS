@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <link href="articledetail.css" type="text/css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="wangEditor.css">
+    <link href="css/articledetail.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/wangEditor.min.css">
     <title>articledetail</title>
 </head>
 <body>
@@ -14,7 +14,8 @@
         <tr>
             <th>类型</th>
             <td id="type">
-                <select id='typenum' ng-model="typenum" ng-change="change(typenum)">
+                <select class='typen' ng-model="typenum" ng-change="change(typenum)">
+                    <option value="">请选择类型</option>
                     <option value="0">首页banner</option>
                     <option value="1">找职位banner</option>
                     <option value="2">找精英banner</option>

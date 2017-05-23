@@ -172,16 +172,13 @@ myApp.controller("upload",function ($scope,$http,$stateParams) {
             url:"/carrots-admin-ajax/a/article/"+$stateParams.id
         }).then(function successCallback(mes) {
             $scope.article=mes.data.data.article
-            $("#typenum").val($scope.article.type)
-            if($scope.article.type!=3){
+            $scope.typenum=String($scope.article.type)
+            $scope.indus=String($scope.article.industry)
+            if($scope.typenum!=3){
                 $scope.show="hid"
-            }else {
-                $("#indus").val($scope.article.industry)
             }
             $scope.title=$scope.article.title
-            $scope.typenum=$scope.article.type
             $scope.status=$scope.article.status
-            $scope.indus=$scope.article.industry
             $scope.link=$scope.article.url
             $scope.picloc=$scope.article.img
             $("#file_img").attr("src",$scope.article.img)
@@ -257,6 +254,7 @@ myApp.controller("upload",function ($scope,$http,$stateParams) {
     $scope.change=function (typenum) {
         if (typenum!=3) {
             $scope.show = "hid"
+            $scope.indus = ""
         }
         else {
             $scope.show = "show"
