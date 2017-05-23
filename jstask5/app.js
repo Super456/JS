@@ -117,6 +117,8 @@ myApp.controller('getarticle',function ($scope,$http,$state) {
     }
     $scope.addArt=function (id) {
         $state.go('page3',{'id':id})
+        console.log(id)
+        uiSref=page3
     }
 })
 myApp.filter("typename",function () {
@@ -126,6 +128,7 @@ myApp.filter("typename",function () {
     }
 })
 myApp.controller("upload",function ($scope,$http,$stateParams) {
+    console.log($stateParams.id)
     if (isNaN($stateParams.id)) {
         $scope.submit = function () {
             $http({

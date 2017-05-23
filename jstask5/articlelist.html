@@ -64,7 +64,7 @@
                 <span class="status">{{x.status=="1" && "草稿" || x.status=="2" && "上线"}}</span>
                 <span class="controll">
                     <a ng-click="changeStatus(x.id,x.status)">{{x.status=="1" && "上线" || x.status=="2" && "下线"}}</a>
-                    <a ui-sref="page3" href="" ng-click="addArt(x.id)">编辑</a>
+                    <a  ng-click="addArt(x.id)" href="">编辑</a>
                     <a id="{{x.id}}" ng-click="dele()">删除</a></span>
             </div>
         </div>
