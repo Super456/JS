@@ -22,7 +22,8 @@
                     <option value="2">找精英banner</option>
                     <option value="3">行业大图</option>
                 </select>
-                <select id='indus' ng-class="show" ng-model="indus">
+                <span class="error" ng-show="typeshow">请选择正确的类型</span>
+                <select id='indus' ng-show="typenum==3" ng-class="show" ng-model="indus">
                     <option value="0">移动互联网</option>
                     <option value="1">电子商务</option>
                     <option value="2">企业服务</option>
@@ -35,7 +36,15 @@
         </tr>
         <tr>
             <th>标题名称</th>
-            <td><input class="title" ng-model="title"></td>
+            <td>
+                <input class="title"
+                       name="title"
+                       ng-model="title"
+                       required>
+                <div ng-messages="myForm.title.$error" ng-if="myForm.title.$touched">
+                    <p class="error" ng-message="required">标题不可为空</p>
+                </div>
+            </td>
         </tr>
         <tr>
             <th>说明</th>
@@ -43,14 +52,20 @@
         </tr>
         <tr>
             <th>跳转链接</th>
-            <td><input class="title" ng-model="link"></td>
+            <td>
+                <input class="title" name="link" ng-model="link" required>
+                <div ng-messages="myForm.link.$error" ng-if="myForm.link.$touched">
+                    <p class="error" ng-message="required">跳转链接不可为空</p>
+                </div>
+            </td>
         </tr>
         <tr>
             <th>配图</th>
             <td>
                 <div class="pic" ng-click="enableup()">
-                    <input id="file" type="file" accept="image/*" name="img">选择图片
+                    <input id="file" type="file" accept="image/*" name="imgn">点击此处选择图片
                 </div>
+                <span class="error" ng-show="imgshow">请上传图片</span>
             </td>
         </tr>
         <tr>
@@ -83,8 +98,8 @@
         </tr>
     </table>
     </form>
-    <button class="btn btn-primary" ng-click="submit()">立即上线</button>
-    <button class="btn btn-default" ng-click="save()">存为草稿</button>
+    <button class="btn btn-primary" ng-click="submit()" ng-disabled="!title || !link || confirmup">立即上线</button>
+    <button class="btn btn-default" ng-click="save()" ng-disabled="confirmup">存为草稿</button>
     <button class="btn btn-warning" ng-click="cancel()">取消</button>
 </content>
 </body>

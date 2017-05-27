@@ -130,6 +130,7 @@ myApp.filter("typename",function () {
 myApp.controller("upload",function ($scope,$http,$stateParams) {
     console.log($stateParams.id)
     if (isNaN($stateParams.id)) {
+        console.log($scope.picloc)
         $scope.submit = function () {
             $http({
                 method:"POST",
@@ -145,7 +146,10 @@ myApp.controller("upload",function ($scope,$http,$stateParams) {
                 }
             }).then(function successCallback(mes) {
                 if (mes.data.code==0) {
+                    $scope.imgshow=false
                     alert ("提交成功")
+                }else {
+                    $scope.imgshow=true
                 }
             })
         }
@@ -253,16 +257,23 @@ myApp.controller("upload",function ($scope,$http,$stateParams) {
         })
     }
     $scope.change=function (typenum) {
-        if (typenum!=3) {
-            $scope.show = "hid"
-            $scope.indus = ""
+        console.log($scope.typenum)
+        if (typenum=="") {
+            $scope.confirmup=true
+            $scope.typeshow=true
         }
         else {
-            $scope.show = "show"
+            $scope.typeshow=false
+            $scope.confirmup=false
         }
     }
+    $scope.cancel=function () {
+        console.log($("#file_img").src)
+    }
+    $scope.confirmup=true
     $scope.ableup=true
     $scope.enableup=function () {
+        $scope.imgshow=false
         $scope.ableup=false
     }
     $scope.Mychange=function () {
