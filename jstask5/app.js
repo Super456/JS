@@ -219,15 +219,13 @@ myApp.controller("upload",function ($scope,$http,$stateParams,$location) {
             $scope.article=mes.data.data.article
             $scope.typenum=String($scope.article.type)
             $scope.indus=String($scope.article.industry)
-            if($scope.typenum!=3){
-                $scope.show="hid"
-            }
+            $scope.createAt=$scope.article.createAt
             $scope.title=$scope.article.title
             $scope.status=$scope.article.status
             $scope.link=$scope.article.url
             $scope.picloc=$scope.article.img
             $("#file_img").attr("src",$scope.article.img)
-            console.log($scope.article.type)
+            console.log($scope.article.createAt)
             editor.$txt.append($scope.article.content)
             $scope.submit=function () {
                 $http({
@@ -241,6 +239,7 @@ myApp.controller("upload",function ($scope,$http,$stateParams,$location) {
                         "content":editor.$txt.html(),
                         "url":$scope.link,
                         "industry":$scope.indus,
+                        "createAt":$scope.createAt,
                     }
                 }).then(function successCallback(mes) {
                     if (mes.data.code==0) {
@@ -260,6 +259,7 @@ myApp.controller("upload",function ($scope,$http,$stateParams,$location) {
                         "content":editor.$txt.html(),
                         "url":$scope.link,
                         "industry":$scope.indus,
+                        "createAt":$scope.createAt,
                     }
                 }).then(function successCallback(mes) {
                     if (mes.data.code==0) {
