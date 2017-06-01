@@ -19,19 +19,32 @@ myApp.config(function ($stateProvider,$urlRouterProvider) {
                 params:{"id":{}}
             })
 })
-myApp.controller('getarticle',function ($scope,$http,$state) {
+myApp.controller('getarticle',function ($scope,$http,$state,$location) {
+    var search = $location.search()
+    console.log(search.author)
+    $scope.seletitle=search.title
+    $scope.seleauthor=search.author
+    $scope.startAt=search.startAt
+    $scope.endAt=search.endAt
+    $scope.seletype=search.type
+    $scope.selestatus=search.status
+    $scope.page=search.page
     $scope.getart=function () {
         $scope.startAt=Date.parse($scope.selestart)
-        $scope.endAt=Date.parse($scope.selepublish)
+        $scope.endAt=Date.parse($scope.selepublish)+86399000
         searcharr = [$scope.seletitle,$scope.seleauthor,$scope.startAt,$scope.endAt,$scope.seletype,$scope.selestatus,$scope.page]
         for (i=0;i<searcharr.length;i++) {
             if (searcharr[i]==undefined) {
                 searcharr[i]=""
             }
-            else if (isNaN(searcharr[i])) {
-                searcharr[i]=""
-            }
         }
+        if (isNaN(searcharr[2])) {
+            searcharr[2]=""
+        }
+        if (isNaN(searcharr[3])) {
+            searcharr[3]=""
+        }
+        $location.search({title:searcharr[0],author:searcharr[1],startAt:searcharr[2],endAt:searcharr[3],type:searcharr[4],status:searcharr[5],page:searcharr[6]})
         $http({
             method:"GET",
             url:"/carrots-admin-ajax/a/article/search?title="+searcharr[0]+"&author="+searcharr[1]+"&startAt="+searcharr[2]+"&endAt="+searcharr[3]+"&type="+searcharr[4]+"&status="+searcharr[5]+"&page="+searcharr[6]
@@ -42,6 +55,16 @@ myApp.controller('getarticle',function ($scope,$http,$state) {
     }
     $scope.getart()
     $scope.clear=function () {
+        $("#starttime").val("")
+        $("#endtime").val("")
+        $scope.selestart=NaN
+        $scope.selepublish=NaN
+        console.log($scope.startAt)
+        $scope.seletitle=""
+        $scope.seleauthor=""
+        $scope.selestatus=""
+        $scope.seletype=""
+        $location.search({title:"",author:"",startAt:"",endAt:"",type:"",status:"",page:searcharr[6]})
         $http({
             method:"GET",
             url:"/carrots-admin-ajax/a/article/search"
@@ -71,12 +94,9 @@ myApp.controller('getarticle',function ($scope,$http,$state) {
             $scope.page++
             $scope.getart()
         }
-        console.log($scope.page)
-        console.log($scope.pagesum)
     }
     $scope.lastpage=function () {
         $scope.page=$scope.pagesum
-        console.log($scope.page)
         $scope.getart()
     }
     $scope.direct=function () {
@@ -105,6 +125,7 @@ myApp.controller('getarticle',function ($scope,$http,$state) {
         else {
             status=1
         }
+        console.log(status)
         $http({
             method:"put",
             url:"/carrots-admin-ajax/a/u/article/status",
@@ -128,10 +149,11 @@ myApp.filter("typename",function () {
     }
 })
 myApp.controller("upload",function ($scope,$http,$stateParams) {
+    $scope.confirmup=true
     console.log($stateParams.id)
     if (isNaN($stateParams.id)) {
-        console.log($scope.picloc)
         $scope.submit = function () {
+            console.log(editor.$txt.html())
             $http({
                 method:"POST",
                 url:"/carrots-admin-ajax/a/u/article",
@@ -140,7 +162,7 @@ myApp.controller("upload",function ($scope,$http,$stateParams) {
                     "type":$scope.typenum,
                     "status":"2",
                     "img":$scope.picloc,
-                    "content":editor.$txt.text(),
+                    "content":editor.$txt.html(),
                     "url":$scope.link,
                     "industry":$scope.indus,
                 }
@@ -162,7 +184,7 @@ myApp.controller("upload",function ($scope,$http,$stateParams) {
                     "type":$scope.typenum,
                     "status":"1",
                     "img":$scope.picloc,
-                    "content":editor.$txt.text(),
+                    "content":editor.$txt.html(),
                     "url":$scope.link,
                     "industry":$scope.indus,
                 }
@@ -174,6 +196,8 @@ myApp.controller("upload",function ($scope,$http,$stateParams) {
         }
     }
     else {
+        $scope.confirmup=false
+        console.log($scope.confirmup)
         $http({
             method:"get",
             url:"/carrots-admin-ajax/a/article/"+$stateParams.id
@@ -197,9 +221,10 @@ myApp.controller("upload",function ($scope,$http,$stateParams) {
                     url:"/carrots-admin-ajax/a/u/article/"+$stateParams.id,
                     params:{
                         "title":$scope.title,
+                        "type":$scope.typenum,
                         "status":"2",
                         "img":$scope.picloc,
-                        "content":editor.$txt.text(),
+                        "content":editor.$txt.html(),
                         "url":$scope.link,
                         "industry":$scope.indus,
                     }
@@ -215,9 +240,10 @@ myApp.controller("upload",function ($scope,$http,$stateParams) {
                     url:"/carrots-admin-ajax/a/u/article/"+$stateParams.id,
                     params:{
                         "title":$scope.title,
+                        "type":$scope.typenum,
                         "status":"1",
                         "img":$scope.picloc,
-                        "content":editor.$txt.text(),
+                        "content":editor.$txt.html(),
                         "url":$scope.link,
                         "industry":$scope.indus,
                     }
@@ -267,10 +293,6 @@ myApp.controller("upload",function ($scope,$http,$stateParams) {
             $scope.confirmup=false
         }
     }
-    $scope.cancel=function () {
-        console.log($("#file_img").src)
-    }
-    $scope.confirmup=true
     $scope.ableup=true
     $scope.enableup=function () {
         $scope.imgshow=false
@@ -281,6 +303,7 @@ myApp.controller("upload",function ($scope,$http,$stateParams) {
         document.getElementById("picname").innerHTML=""
         document.getElementById("picsize").innerHTML=""
         document.getElementById("status").innerHTML=""
+        $scope.picloc=""
         $scope.percent=""
         $scope.ableup=true
     }

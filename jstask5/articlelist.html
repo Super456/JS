@@ -13,10 +13,10 @@
         <input ng-model="seletitle">
         <span>创&nbsp;建&nbsp;者</span>
         <input ng-model="seleauthor">
-        <span>创建时间</span>
-        <input type="date" ng-model="selestart">
+        <span>修改时间</span>
+        <input id="starttime" type="date" ng-model="selestart">
         <span>-</span>
-        <input type="date" ng-model="selepublish">
+        <input id="endtime" type="date" ng-model="selepublish">
         <br />
         <span>状&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;态</span>
         <select ng-model="selestatus">
@@ -39,7 +39,6 @@
         <div class="title">
             <span>article管理</span>
             <button ui-sref="page3" href="">+新增</button>
-            <button>保存排序</button>
         </div>
         <div class="detail">
             <div class="list">
@@ -63,9 +62,9 @@
                 <span class="publish">{{x.publishat | date:'yyyy-MM-dd HH:mm:ss'}}</span>
                 <span class="status">{{x.status=="1" && "草稿" || x.status=="2" && "上线"}}</span>
                 <span class="controll">
-                    <a ng-click="changeStatus(x.id,x.status)">{{x.status=="1" && "上线" || x.status=="2" && "下线"}}</a>
-                    <a  ng-click="addArt(x.id)" href="">编辑</a>
-                    <a id="{{x.id}}" ng-click="dele()">删除</a></span>
+                    <button class="btn btn-default" ng-click="changeStatus(x.id,x.status)">{{x.status=="1" && "上线" || x.status=="2" && "下线"}}</button>
+                    <button class="btn btn-default"  ng-click="addArt(x.id)" href="">编辑</button>
+                    <button class="btn btn-default" id="{{x.id}}" ng-click="dele()">删除</button></span>
             </div>
         </div>
         <div class="pages">

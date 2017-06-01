@@ -63,14 +63,15 @@
             <th>配图</th>
             <td>
                 <div class="pic" ng-click="enableup()">
-                    <input id="file" type="file" accept="image/*" name="imgn">点击此处选择图片
+                    <input id="file" type="file" accept="image/jpg,image/JPG,image/gif,image/png" name="imgn">点击此处选择图片
                 </div>
                 <span class="error" ng-show="imgshow">请上传图片</span>
+                <input id="picUrl" name="imgUrl" type="text" ng-model="picloc" required>
             </td>
         </tr>
         <tr>
             <th></th>
-            <td id="preview"><img id="file_img" src={{picloc}}></td>
+            <td id="preview"><img id="file_img" name="picture"></td>
         </tr>
         <tr>
             <th></th>
@@ -98,9 +99,8 @@
         </tr>
     </table>
     </form>
-    <button class="btn btn-primary" ng-click="submit()" ng-disabled="!title || !link || confirmup">立即上线</button>
-    <button class="btn btn-default" ng-click="save()" ng-disabled="confirmup">存为草稿</button>
-    <button class="btn btn-warning" ng-click="cancel()">取消</button>
+    <button class="btn btn-primary" ng-click="submit()" ng-disabled="!title || !link || !picloc || confirmup">立即上线</button>
+    <button class="btn btn-default" ng-click="save()" ng-disabled="!title || !link || !picloc || confirmup">存为草稿</button>
 </content>
 </body>
 <script src="wangEditor.js"></script>
