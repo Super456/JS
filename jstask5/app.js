@@ -119,8 +119,10 @@ myApp.controller('getarticle',function ($scope,$http,$state,$location) {
         $http({
             method:"delete",
             url:"/carrots-admin-ajax/a/u/article/"+id
+        }).then(function successCallback(reponse) {
+            alert("删除成功")
+            $scope.getart()
         })
-        $scope.getart()
     }
     $scope.changeStatus=function (id,status) {
         if (status==1){
@@ -137,8 +139,10 @@ myApp.controller('getarticle',function ($scope,$http,$state,$location) {
                 "id":id,
                 "status":status
             }
+        }).then(function successCallback(reponse) {
+            alert("状态更改成功")
+            $scope.getart()
         })
-        $scope.getart()
     }
     $scope.addArt=function (id) {
         $state.go('page3',{'id':id})
