@@ -53,6 +53,10 @@ myApp.controller('getarticle',function ($scope,$http,$state,$location) {
             $scope.article = reponse.data.data.articleList;
         })
     }
+    $scope.search=function () {
+        $scope.page=1
+        $scope.getart()
+    }
     $scope.getart()
     $scope.clear=function () {
         $("#starttime").val("")
@@ -148,7 +152,12 @@ myApp.filter("typename",function () {
         return type = typeshow[type];
     }
 })
-myApp.controller("upload",function ($scope,$http,$stateParams) {
+myApp.controller("upload",function ($scope,$http,$stateParams,$location) {
+    var idfresh = $location.search()
+    console.log(idfresh.id)
+    if (idfresh.id!=undefined){
+        $stateParams.id = idfresh.id
+    }
     $scope.confirmup=true
     console.log($stateParams.id)
     if (isNaN($stateParams.id)) {
@@ -196,6 +205,7 @@ myApp.controller("upload",function ($scope,$http,$stateParams) {
         }
     }
     else {
+        $location.search({id:$stateParams.id})
         $scope.confirmup=false
         console.log($scope.confirmup)
         $http({
